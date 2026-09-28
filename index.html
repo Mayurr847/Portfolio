@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mayurr Prajapati // Frontend & Mobile Developer</title>
+  <meta name="description"
+    content="Portfolio of Mayur Prajapati, Frontend & Mobile Developer specializing in React.js, React Native, TypeScript, and modern responsive architectures.">
+
+  <!-- Google Fonts: Inter, Instrument Serif, Syne, Plus Jakarta Sans, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Custom Magnetic Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- Editorial Top Navigation -->
+  <header class="site-header" id="header">
+    <a href="#hero" class="brand-logo">
+      <span class="brand-badge-dot"></span>
+      MAYURR
+    </a>
+
+    <nav>
+      <ul class="nav-links-menu">
+        <li><a href="#hero" class="nav-item-link active">Home</a></li>
+        <li><a href="#services" class="nav-item-link">Expertise</a></li>
+        <li><a href="#about" class="nav-item-link">About</a></li>
+        <li><a href="#portfolio" class="nav-item-link">Portfolio</a></li>
+        <li><a href="#timeline" class="nav-item-link">Experience</a></li>
+        <li><a href="#contact" class="nav-item-link">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-pill-actions">
+      <a href="#contact" class="btn-menu-pill">
+        <span>MENU ☰</span>
+      </a>
+      <button class="hamburger-mobile" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="main-content">
+
+    <!-- ====================================================================
+         1. HERO SECTION (3-COLUMN EDITORIAL ARCH)
+         ==================================================================== -->
+    <section class="hero-editorial" id="hero">
+      <!-- ThreeUI Background Ghost Architectural Typography -->
+      <div class="hero-ghost-watermark" aria-hidden="true">MAYURR</div>
+
+      <!-- ThreeUI 3D Atmospheric Ambient WebGL Canvas -->
+      <canvas id="heroAtmosphereCanvas" class="hero-3d-scene" aria-hidden="true"></canvas>
+
+      <div class="content-container hero-content-relative">
+        <div class="hero-grid-3col">
+
+          <!-- Left Column: Title & Headline -->
+          <div class="hero-col-left reveal-on-scroll">
+            <span class="hero-greeting">Hey. I'm Mayurr,</span>
+
+            <div class="hero-wordmark-container" id="heroWordmark">
+              <h1 class="hero-main-title">
+                A FRONTEND
+                <span class="serif-italic">&amp; Mobile</span>
+                DEVELOPER
+              </h1>
+              <canvas class="wordmark-gl-canvas" id="wordmarkCanvas"></canvas>
+              <div class="wordmark-label" id="wmLabel0"></div>
+              <div class="wordmark-label" id="wmLabel1"></div>
+              <div class="wordmark-label" id="wmLabel2"></div>
+            </div>
+
+            <p class="hero-bio-text">
+              Transforming ideas into high-performance web and mobile applications — React.js, React Native, and
+              TypeScript that captivates, engages, and delivers results.
+            </p>
+
+            <a href="#contact" class="hero-btn-pill">
+              <span>CONTACT ME</span>
+              <span class="pill-arrow-circle">→</span>
+            </a>
+          </div>
+
+          <!-- Center Column: Editorial Portrait Arch -->
+          <div class="hero-col-center reveal-on-scroll">
+            <div class="hero-portrait-arch">
+              <img src="assets/mayur.jpg" alt="Mayur Prajapati - Frontend Developer" class="hero-portrait-img">
+            </div>
+          </div>
+
+          <!-- Right Column: Vertical Stats Stack -->
+          <div class="hero-col-right reveal-on-scroll">
+            <div class="stat-stack-item">
+              <span class="stat-big-num">1.2+</span>
+              <span class="stat-sub-label">Years Experience</span>
+            </div>
+
+            <div class="stat-stack-item">
+              <span class="stat-big-num">10+</span>
+              <span class="stat-sub-label">Production Screens</span>
+            </div>
+
+            <div class="stat-stack-item">
+              <span class="stat-big-num">*99%</span>
+              <span class="stat-sub-label">Code Quality & Satisfaction</span>
+            </div>
+
+            <div class="stat-stack-item">
+              <span class="stat-big-num">2</span>
+              <span class="stat-sub-label">Platforms (Web & Mobile)</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         2. 4-COLUMN CAPABILITIES TICKER
+         ==================================================================== -->
+    <section class="capabilities-bar-section" id="services">
+      <div class="content-container">
+        <div class="capabilities-grid-4col">
+
+          <div class="capability-item-card reveal-on-scroll">
+            <h3 class="capability-card-title">User-Centered Frontend</h3>
+            <p class="capability-card-text">
+              Intuitive and engaging web applications engineered with React.js tailored for seamless UX.
+            </p>
+          </div>
+
+          <div class="capability-item-card reveal-on-scroll">
+            <h3 class="capability-card-title">Cross-Platform Mobile</h3>
+            <p class="capability-card-text">
+              High-performance React Native applications built and optimized for Android and iOS devices.
+            </p>
+          </div>
+
+          <div class="capability-item-card reveal-on-scroll">
+            <h3 class="capability-card-title">REST APIs & Workflows</h3>
+            <p class="capability-card-text">
+              Robust Axios networking, OAuth authentication, and reliable CRUD architecture.
+            </p>
+          </div>
+
+          <div class="capability-item-card reveal-on-scroll">
+            <h3 class="capability-card-title">TypeScript & Reusable UI</h3>
+            <p class="capability-card-text">
+              Pixel-perfect component hierarchies and clean maintainable code across screen sizes.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         3. TRUSTED TECH STACK (2x4 GRID BOXES)
+         ==================================================================== -->
+    <section class="trusted-tech-section">
+      <div class="content-container">
+        <div class="trusted-header-row reveal-on-scroll">
+          <span class="trusted-label-title">Core Technology Stack</span>
+          <span class="trusted-sub-note">Modern web, mobile and API toolkits</span>
+        </div>
+
+        <div class="tech-boxes-grid reveal-on-scroll">
+          <div class="tech-box-item" data-blob-color="#00D8FF">
+            <svg class="tech-icon-svg" viewBox="-11.5 -10.23 23 20.46" width="18" height="18" fill="none"
+              stroke="currentColor" stroke-width="1.2">
+              <circle cx="0" cy="0" r="2.05" fill="currentColor" />
+              <g stroke="currentColor" stroke-width="1.2" fill="none">
+                <ellipse rx="11" ry="4.2" />
+                <ellipse rx="11" ry="4.2" transform="rotate(60)" />
+                <ellipse rx="11" ry="4.2" transform="rotate(120)" />
+              </g>
+            </svg>
+            <span>React.js</span>
+          </div>
+
+          <div class="tech-box-item" data-blob-color="#61DAFB">
+            <svg class="tech-icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="2" width="14" height="20" rx="3" ry="3" />
+              <line x1="12" y1="18" x2="12.01" y2="18" />
+              <line x1="9" y1="5" x2="15" y2="5" />
+            </svg>
+            <span>React Native</span>
+          </div>
+
+          <div class="tech-box-item" data-blob-color="#3178C6">
+            <svg class="tech-icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="3" />
+              <path
+                d="M8 8v8M6 8h4M14 13.5c.5.5 1.2.8 2 .8 1.1 0 1.8-.6 1.8-1.4 0-1.8-3.6-1.1-3.6-3.4 0-.9.8-1.5 1.8-1.5.8 0 1.5.3 2 .8" />
+            </svg>
+            <span>TypeScript</span>
+          </div>
+
+          <div class="tech-box-item" data-blob-color="#F7DF1E">
+            <svg class="tech-icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+            </svg>
+            <span>JavaScript ES6+</span>
+          </div>
+
+          <div class="tech-box-item" data-blob-color="#38BDF8">
+            <svg class="tech-icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path
+                d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z" />
+            </svg>
+            <span>Tailwind CSS</span>
+          </div>
+
+          <div class="tech-box-item" data-blob-color="#A855F7">
+            <svg class="tech-icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="18" cy="5" r="3" />
+              <circle cx="6" cy="12" r="3" />
+              <circle cx="18" cy="19" r="3" />
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+            </svg>
+            <span>REST APIs / Axios</span>
+          </div>
+
+          <div class="tech-box-item" data-blob-color="#EA4335">
+            <svg class="tech-icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              <circle cx="12" cy="11" r="2.5" fill="currentColor" />
+            </svg>
+            <span>Google OAuth</span>
+          </div>
+
+          <div class="tech-box-item" data-blob-color="#F05032">
+            <svg class="tech-icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="6" y1="3" x2="6" y2="15" />
+              <circle cx="18" cy="6" r="3" />
+              <circle cx="6" cy="18" r="3" />
+              <circle cx="6" cy="6" r="3" />
+              <path d="M18 9a9 9 0 0 1-9 9" />
+            </svg>
+            <span>Git & GitHub</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         4. EDITORIAL PHILOSOPHY / ABOUT SECTION
+         ==================================================================== -->
+    <section class="about-editorial-section" id="about">
+      <div class="content-container">
+        <div class="about-split-grid">
+
+          <div class="reveal-on-scroll">
+            <h2 class="about-left-headline">
+              Crafting Scalable Apps & Intuitive Experiences
+            </h2>
+          </div>
+
+          <div class="about-right-paragraphs reveal-on-scroll">
+            <p class="about-lead-p">
+              Hey, I'm Mayur, a Frontend Developer passionate about creating visually compelling, responsive, and
+              user-friendly digital experiences.
+            </p>
+
+            <p class="about-body-p">
+              With 1.2+ years of hands-on experience building across React.js, React Native, and TypeScript, I engineer
+              web and mobile interfaces that not only look refined but resonate with users. Whether it's building full
+              production screens from ground up or integrating complex REST APIs for seamless usability, I blend speed,
+              precision, and clean code to bring ideas to life. Let's collaborate and make something extraordinary.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         5. PORTFOLIO SHOWCASE (EDITORIAL CARDS)
+         ==================================================================== -->
+    <section class="portfolio-section" id="portfolio">
+      <div class="content-container">
+
+        <div class="portfolio-header-bar reveal-on-scroll">
+          <h2 class="portfolio-main-title">Portfolio</h2>
+          <p class="portfolio-sub-caption">
+            Explore my recent web and mobile applications and discover how we can transform your vision into reality.
+          </p>
+        </div>
+
+        <div class="portfolio-cards-stack">
+
+          <!-- Project 1: IntervAI -->
+          <div class="portfolio-showcase-card reveal-on-scroll" data-project="IntervAI">
+            <div class="portfolio-img-wrapper">
+              <img src="assets/project1.jpg" alt="IntervAI Project Mockup" class="portfolio-card-img">
+            </div>
+
+            <div class="portfolio-card-meta">
+              <div>
+                <h3 class="portfolio-item-name">IntervAI</h3>
+                <p class="portfolio-item-desc">AI-Powered Mobile Assessment, Onboarding & Interview App</p>
+              </div>
+              <div style="display: flex; align-items: center; gap: 1.5rem;">
+                <span class="portfolio-item-year">2025</span>
+                <span class="portfolio-tag-pill">React Native</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: Krid App -->
+          <div class="portfolio-showcase-card reveal-on-scroll" data-project="Krid App">
+            <div class="portfolio-img-wrapper">
+              <img src="assets/project2.jpg" alt="Krid App Web Mockup" class="portfolio-card-img">
+            </div>
+
+            <div class="portfolio-card-meta">
+              <div>
+                <h3 class="portfolio-item-name">Krid App</h3>
+                <p class="portfolio-item-desc">Scalable Modular Web Application & CRUD Ecosystem</p>
+              </div>
+              <div style="display: flex; align-items: center; gap: 1.5rem;">
+                <span class="portfolio-item-year">2025</span>
+                <span class="portfolio-tag-pill">React.js</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         6. EXPERIENCE & EDUCATION TIMELINE
+         ==================================================================== -->
+    <section class="timeline-section" id="timeline">
+      <div class="content-container">
+        <div class="timeline-split-grid">
+
+          <!-- Experience Column -->
+          <div class="timeline-col reveal-on-scroll">
+            <h3 class="timeline-col-title">// Professional Experience</h3>
+
+            <div class="timeline-entry-card">
+              <div class="timeline-entry-meta">
+                <h4 class="timeline-entry-role">Frontend Developer</h4>
+                <span class="timeline-entry-date">July 2025 – Present</span>
+              </div>
+              <div class="timeline-entry-org">Web & Cross-Platform Mobile Applications</div>
+              <ul class="timeline-entry-duties">
+                <li>Develop and maintain responsive web apps using React.js and cross-platform mobile apps using React
+                  Native and TypeScript.</li>
+                <li>Build reusable UI components and responsive interfaces across Web, Android, and iOS.</li>
+                <li>Integrate REST APIs using Axios and implement CRUD workflows across multiple application modules.
+                </li>
+                <li>Develop frontend workflows for authentication, onboarding, profile management, dashboards, and
+                  interview features.</li>
+                <li>Investigate and resolve Android/iOS-specific UI and functionality issues during development and
+                  testing.</li>
+              </ul>
+            </div>
+
+            <!-- Social Profiles & Connect Card -->
+            <div class="timeline-entry-card timeline-bottom-card">
+              <div class="timeline-entry-meta">
+                <h4 class="timeline-entry-role" style="font-size: 1.05rem; margin-bottom: 0;">Social Profiles & Connect</h4>
+                <span class="timeline-entry-date" style="font-size: 0.72rem; letter-spacing: 0.5px;">// Online</span>
+              </div>
+              <div class="social-icons-row">
+                <a href="https://linkedin.com/in/mayur-prajapati-354" target="_blank" rel="noopener" class="social-icon-btn" title="LinkedIn" aria-label="LinkedIn">
+                  <svg class="social-pill-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                    <rect width="24" height="24" rx="4.5" fill="#0A66C2" />
+                    <path fill="#FFFFFF" d="M19 19h-3.13v-4.9c0-1.17-.02-2.67-1.63-2.67-1.63 0-1.88 1.27-1.88 2.59V19H9.23V8.9h3v1.38h.04c.42-.79 1.44-1.63 2.98-1.63 3.18 0 3.77 2.1 3.77 4.82V19zM5.34 7.52a1.74 1.74 0 1 1 0-3.48 1.74 1.74 0 0 1 0 3.48zM6.9 19H3.77V8.9H6.9V19z" />
+                  </svg>
+                </a>
+
+                <a href="https://github.com/" target="_blank" rel="noopener" class="social-icon-btn" title="GitHub" aria-label="GitHub">
+                  <svg class="social-pill-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                    <circle cx="12" cy="12" r="12" fill="#24292E" />
+                    <path fill="#FFFFFF" fill-rule="evenodd" clip-rule="evenodd" d="M12 4.5a7.5 7.5 0 0 0-2.37 14.62c.38.07.51-.16.51-.36v-1.4c-2.09.45-2.53-.88-2.53-.88-.34-.87-.84-1.1-.84-1.1-.68-.47.05-.46.05-.46.75.05 1.15.77 1.15.77.67 1.15 1.76.82 2.19.63.07-.49.26-.82.48-1.01-1.67-.19-3.42-.83-3.42-3.71 0-.82.29-1.49.77-2.02-.08-.19-.33-.96.07-2 0 0 .63-.2 2.07.77.6-.17 1.25-.25 1.88-.25.64 0 1.28.08 1.88.25 1.44-.97 2.07-.77 2.07-.77.41 1.04.16 1.81.08 2 .48.53.77 1.2.77 2.02 0 2.89-1.76 3.52-3.43 3.7.27.23.51.69.51 1.39v2.06c0 .2.14.44.52.36A7.502 7.502 0 0 0 12 4.5z" />
+                  </svg>
+                </a>
+
+                <a href="https://youtube.com/@mayuruncut?si=Wjxc4pWacgBS59aE" target="_blank" rel="noopener" class="social-icon-btn" title="YouTube" aria-label="YouTube">
+                  <svg class="social-pill-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                    <path fill="#FF0000" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z" />
+                    <path fill="#FFFFFF" d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                  </svg>
+                </a>
+
+                <a href="mailto:prajapatimayurr564@gmail.com" class="social-icon-btn" title="Gmail" aria-label="Gmail">
+                  <svg class="social-pill-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                    <path fill="#4285F4" d="M22 6.78V18a2 2 0 0 1-2 2h-3V11.22L22 6.78Z" />
+                    <path fill="#34A853" d="M2 6.78V18a2 2 0 0 0 2 2h3V11.22L2 6.78Z" />
+                    <path fill="#EA4335" d="M17 4h3a2 2 0 0 1 2 2.78l-5 3.72V4Z" />
+                    <path fill="#FBBC05" d="M7 4H4a2 2 0 0 0-2 2.78l5 3.72V4Z" />
+                    <path fill="#C5221F" d="M7 10.5 12 14.25 17 10.5V4H7v6.5Z" />
+                  </svg>
+                </a>
+
+                <a href="https://wa.me/917862819404" target="_blank" rel="noopener" class="social-icon-btn" title="WhatsApp" aria-label="WhatsApp">
+                  <svg class="social-pill-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                    <circle cx="12" cy="12" r="12" fill="#25D366" />
+                    <path fill="#FFFFFF" d="M17.15 14.25c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.71.88-.87 1.06-.16.18-.32.2-.59.07-.27-.14-1.15-.42-2.19-1.35-.81-.72-1.35-1.61-1.51-1.88-.16-.27-.02-.42.12-.55.12-.12.27-.32.4-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.48-.84-2.03-.22-.54-.45-.46-.61-.47h-.53c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.3s.98 2.66 1.12 2.84c.14.18 1.93 2.94 4.67 4.13.65.28 1.16.45 1.56.58.65.21 1.25.18 1.72.11.52-.08 1.6-.65 1.83-1.28.23-.63.23-1.18.16-1.28-.07-.1-.25-.18-.52-.32z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Education & Languages Column -->
+          <div class="timeline-col reveal-on-scroll">
+            <h3 class="timeline-col-title">// Education & Languages</h3>
+
+            <!-- MCA -->
+            <div class="timeline-entry-card">
+              <div class="timeline-entry-meta">
+                <h4 class="timeline-entry-role">MCA</h4>
+                <span class="timeline-entry-date">2021 – 2023</span>
+              </div>
+              <div class="timeline-entry-org">Master of Computer Applications</div>
+              <p style="color: var(--text-muted); font-size: 0.88rem;">Gujarat Technological University</p>
+            </div>
+
+            <!-- BCA -->
+            <div class="timeline-entry-card">
+              <div class="timeline-entry-meta">
+                <h4 class="timeline-entry-role">BCA</h4>
+                <span class="timeline-entry-date">2018 – 2021</span>
+              </div>
+              <div class="timeline-entry-org">Bachelor of Computer Applications</div>
+              <p style="color: var(--text-muted); font-size: 0.88rem;">Hemchandracharya North Gujarat University</p>
+            </div>
+
+            <!-- Languages -->
+            <div class="timeline-entry-card timeline-bottom-card">
+              <div class="timeline-entry-meta">
+                <h4 class="timeline-entry-role" style="font-size: 1.05rem; margin-bottom: 0;">Languages Spoken</h4>
+                <span class="timeline-entry-date" style="font-size: 0.72rem; letter-spacing: 0.5px;">// Fluent</span>
+              </div>
+              <div class="lang-chips-grid">
+                <span class="lang-chip">English</span>
+                <span class="lang-chip">Hindi</span>
+                <span class="lang-chip">Gujarati</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         7. CONTACT & FOOTER
+         ==================================================================== -->
+    <section class="contact-editorial-section" id="contact">
+      <div class="content-container">
+        <div class="contact-hero-box reveal-on-scroll">
+          <h2 class="contact-headline">
+            Let's Build Something Extraordinary.
+          </h2>
+          <p class="contact-sub-text">
+            Available for Frontend Developer roles, React.js / React Native mobile engineering, and innovative product
+            teams.
+          </p>
+
+          <!-- Direct Contact Chips -->
+          <div class="contact-chips-row">
+            <a href="mailto:prajapatimayurr564@gmail.com" class="contact-chip-item">
+              <svg class="contact-chip-icon" viewBox="0 0 24 24" width="15" height="15" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+              <span>prajapatimayurr564@gmail.com</span>
+            </a>
+            <a href="tel:+917862819404" class="contact-chip-item">
+              <svg class="contact-chip-icon" viewBox="0 0 24 24" width="15" height="15" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              <span>+91 7862819404</span>
+            </a>
+            <div class="contact-chip-item">
+              <svg class="contact-chip-icon" viewBox="0 0 24 24" width="15" height="15" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>Ahmedabad, Gujarat</span>
+            </div>
+          </div>
+
+          <div class="contact-primary-btns">
+            <a href="mailto:prajapatimayurr564@gmail.com" class="btn-black-pill">
+              <span>Send An Email ➔</span>
+            </a>
+            <button class="btn-outline-pill btn-copy-email" type="button">
+              <span>Copy Email Address</span>
+            </button>
+          </div>
+
+          <ul class="social-links-list">
+            <li><a href="https://linkedin.com/in/mayur-prajapati-354" target="_blank" rel="noopener"
+                class="social-link-item">LINKEDIN PROFILE ↗</a></li>
+            <li><a href="https://youtube.com/@mayuruncut?si=Wjxc4pWacgBS59aE" target="_blank" rel="noopener"
+                class="social-link-item">YOUTUBE CHANNEL ↗</a></li>
+            <li><a href="mailto:prajapatimayurr564@gmail.com" class="social-link-item">DIRECT EMAIL ↗</a></li>
+            <li><a href="tel:+917862819404" class="social-link-item">CALL +91 7862819404 ↗</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="content-container">
+      <div class="site-footer-bar">
+        <div>© 2026 MAYUR PRAJAPATI. FRONTEND & MOBILE DEVELOPER.</div>
+        <div>AHMEDABAD, GUJARAT, INDIA</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive Project Details Modal -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal-dialog">
+      <button class="modal-close-btn modal-close" aria-label="Close Modal">&times;</button>
+      <span
+        style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 0.6rem;">Project
+        Archive Dossier</span>
+      <h3 id="modal-title"
+        style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 1.2rem; color: var(--text-dark);">
+        Project Details</h3>
+      <div id="modal-desc" style="color: var(--text-muted); line-height: 1.8; margin-bottom: 2rem; font-size: 0.94rem;">
+        Loading...</div>
+      <div>
+        <button class="btn-black-pill modal-close" style="padding: 0.75rem 1.6rem; font-size: 0.82rem;">
+          <span>Close Dossier</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-msg">✓ COPIED TO CLIPBOARD</div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
