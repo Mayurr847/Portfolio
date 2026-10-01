@@ -1137,7 +1137,7 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   12. CONTACT / CALL TO ACTION
+   12. CONTACT / EDITORIAL FORM
    -------------------------------------------------------------------------- */
 .contact-editorial-section {
   padding: 7rem 0 5rem 0;
@@ -1167,60 +1167,83 @@ body {
   font-size: 1.12rem;
   color: var(--text-muted);
   max-width: 560px;
-  margin: 0 auto 2.5rem auto;
+  margin: 0 auto 2.8rem auto;
 }
 
-.contact-chips-row {
+/* Editorial Contact Form */
+.editorial-contact-form {
+  max-width: 640px;
+  margin: 0 auto;
+  width: 100%;
+  text-align: left;
+}
+
+.contact-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+  margin-bottom: 1.4rem;
+}
+
+.form-group {
   display: flex;
-  justify-content: center;
-  gap: 1.2rem;
-  margin-bottom: 2.8rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-bottom: 1.4rem;
 }
 
-.contact-chip-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.75rem 1.6rem;
-  background: var(--bg-stone-subtle);
-  border-radius: 100px;
-  color: var(--text-dark);
-  text-decoration: none;
+.form-label {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--text-dim);
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  background: var(--bg-stone-subtle);
   border: 1px solid var(--border-light);
-  transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
+  border-radius: 12px;
+  padding: 0.95rem 1.2rem;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.94rem;
+  outline: none;
+  transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+  box-sizing: border-box;
 }
 
-.contact-chip-icon {
-  width: 15px;
-  height: 15px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  color: currentColor;
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.32);
+  font-size: 0.88rem;
 }
 
-.contact-chip-item:hover {
-  background: #ffffff;
-  color: #000000;
-  transform: translateY(-2px);
+.form-input:focus,
+.form-textarea:focus {
+  border-color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
 }
 
-.contact-primary-btns {
+.form-textarea {
+  resize: vertical;
+  min-height: 130px;
+  line-height: 1.6;
+}
+
+.contact-form-actions {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1.2rem;
-  margin-bottom: 3.2rem;
-  flex-wrap: wrap;
+  margin-top: 1.8rem;
 }
 
-.btn-black-pill {
-  padding: 1rem 2.4rem;
+.btn-submit-message {
+  padding: 1rem 2.8rem;
   background: #ffffff;
   color: #000000;
   border-radius: 100px;
@@ -1230,54 +1253,80 @@ body {
   letter-spacing: 1.5px;
   text-decoration: none;
   text-transform: uppercase;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
   border: none;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
 }
 
-.btn-black-pill:hover {
+.btn-submit-message:hover {
   transform: translateY(-2px);
   opacity: 0.9;
 }
 
-.btn-outline-pill {
-  padding: 0.95rem 2rem;
-  background: transparent;
-  border: 1px solid var(--border-medium);
+.btn-submit-message:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.form-status-msg {
+  margin-top: 1.4rem;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  padding: 0.85rem 1.4rem;
   border-radius: 100px;
-  color: var(--text-dark);
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  display: none;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  animation: fadeInStatus 0.35s ease;
 }
 
-.btn-outline-pill:hover {
-  background: #ffffff;
-  color: #000000;
+.form-status-msg.fade-out {
+  opacity: 0;
+  transform: translateY(-6px);
 }
 
-.social-links-list {
-  display: flex;
-  justify-content: center;
-  gap: 2.2rem;
-  list-style: none;
-  flex-wrap: wrap;
+.form-status-msg.status-success {
+  display: block;
+  color: #25D366;
+  background: rgba(37, 211, 102, 0.08);
+  border: 1px solid rgba(37, 211, 102, 0.25);
 }
 
-.social-link-item {
-  color: var(--text-muted);
-  text-decoration: none;
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  transition: color 0.2s ease;
+.form-status-msg.status-error {
+  display: block;
+  color: #ff5252;
+  background: rgba(255, 82, 82, 0.08);
+  border: 1px solid rgba(255, 82, 82, 0.25);
 }
 
-.social-link-item:hover {
-  color: var(--text-dark);
+@keyframes fadeInStatus {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Celebration Fireworks Canvas Overlay */
+#fireworks-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99999;
+  display: block;
 }
 
 /* --------------------------------------------------------------------------
@@ -1500,6 +1549,11 @@ body {
 
   .contact-hero-box {
     padding: 3rem 1.5rem;
+  }
+
+  .contact-form-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
   }
 
   .site-footer-bar {

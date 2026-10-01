@@ -1512,6 +1512,340 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initStatCounters();
 
+  /* --------------------------------------------------------------------------
+     14. Editorial Contact Form Handler (Web3Forms Direct Delivery)
+     -------------------------------------------------------------------------- */
+  function initContactForm() {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+
+    const nameInput = document.getElementById('contact-name');
+    const emailInput = document.getElementById('contact-email');
+    const messageInput = document.getElementById('contact-message');
+    const subjectInput = document.getElementById('contact-subject');
+    const submitBtn = document.getElementById('btn-submit-contact');
+    const result = document.getElementById('form-result') || document.getElementById('form-status');
+    let statusTimeout = null;
+
+    function showStatus(type, messageText, autoHideDuration = 4000) {
+      if (!result) return;
+      if (statusTimeout) clearTimeout(statusTimeout);
+
+      result.className = `form-status-msg status-${type}`;
+      result.textContent = messageText;
+      result.style.display = 'block';
+      result.classList.remove('fade-out');
+
+      if (autoHideDuration > 0) {
+        statusTimeout = setTimeout(() => {
+          result.classList.add('fade-out');
+          setTimeout(() => {
+            result.style.display = 'none';
+            result.classList.remove('fade-out');
+          }, 450);
+        }, autoHideDuration);
+      }
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = nameInput ? nameInput.value.trim() : '';
+      const email = emailInput ? emailInput.value.trim() : '';
+      const message = messageInput ? messageInput.value.trim() : '';
+
+      if (!email || !message) {
+        showStatus('error', 'Please provide both your email address and message.', 4500);
+        return;
+      }
+
+      // Simple email format check
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showStatus('error', 'Please enter a valid email address.', 4500);
+        return;
+      }
+
+      if (subjectInput) {
+        subjectInput.value = `New Portfolio Message from ${name || email}`;
+      }
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Sending Message...</span>';
+      }
+
+      if (result) {
+        if (statusTimeout) clearTimeout(statusTimeout);
+        result.style.display = 'none';
+        result.classList.remove('fade-out');
+      }
+
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: json
+      })
+        .then(async (response) => {
+          let resJson = {};
+          try {
+            resJson = await response.json();
+          } catch (parseErr) {}
+
+          if (response.status === 200 || resJson.success) {
+            // Trigger bottom-to-top fireworks celebration
+            try {
+              triggerCelebrationFireworks();
+            } catch (fwErr) {
+              console.warn('Fireworks trigger:', fwErr);
+            }
+
+            // Play success chime sound
+            try {
+              if (sounds && typeof sounds.playSuccessChime === 'function') {
+                sounds.playSuccessChime();
+              }
+            } catch (err) {}
+
+            showStatus('success', `✓ Thank you, ${name || 'friend'}! Your message has been sent successfully.`, 4500);
+
+            form.reset();
+
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = '<span>Message Sent ✓</span>';
+              setTimeout(() => {
+                submitBtn.innerHTML = '<span>Send Message ➔</span>';
+              }, 3500);
+            }
+          } else {
+            showStatus('error', resJson.message || 'Something went wrong. Please check your connection.', 5000);
+
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = '<span>Send Message ➔</span>';
+            }
+          }
+        })
+        .catch((error) => {
+          console.error('Web3Forms submit error:', error);
+          showStatus('error', 'Network error! Please check your internet connection.', 5000);
+
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<span>Send Message ➔</span>';
+          }
+        });
+    });
+  }
+
+  /* --------------------------------------------------------------------------
+     15. Bottom-to-Top Fireworks Rocket Celebration Engine
+     -------------------------------------------------------------------------- */
+  function triggerCelebrationFireworks() {
+    const canvas = document.getElementById('fireworks-canvas');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    const onResize = () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    };
+    window.addEventListener('resize', onResize);
+
+    const PALETTE = [
+      '#FFD700', // Gold
+      '#00F0FF', // Electric Cyan
+      '#25D366', // Emerald
+      '#FF3366', // Radiant Coral
+      '#B537F2', // Electric Purple
+      '#FFA500', // Bright Amber
+      '#FFFFFF'  // Diamond White
+    ];
+
+    class Spark {
+      constructor(x, y, color) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 6.5 + 1.8;
+        this.vx = Math.cos(angle) * speed;
+        this.vy = Math.sin(angle) * speed;
+        this.friction = 0.96;
+        this.gravity = 0.14;
+        this.alpha = 1;
+        this.decay = Math.random() * 0.016 + 0.014;
+        this.size = Math.random() * 2.6 + 1.2;
+        this.flicker = Math.random() > 0.4;
+      }
+
+      update() {
+        this.vx *= this.friction;
+        this.vy *= this.friction;
+        this.vy += this.gravity;
+        this.x += this.vx;
+        this.y += this.vy;
+        this.alpha -= this.decay;
+      }
+
+      draw(c) {
+        c.save();
+        c.globalAlpha = Math.max(0, this.alpha * (this.flicker ? (Math.random() * 0.4 + 0.6) : 1));
+        c.fillStyle = this.color;
+        c.shadowBlur = 8;
+        c.shadowColor = this.color;
+        c.beginPath();
+        c.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        c.fill();
+        c.restore();
+      }
+    }
+
+    class Rocket {
+      constructor(startX, targetY, color) {
+        this.x = startX;
+        this.y = height;
+        this.targetY = targetY;
+        this.color = color;
+        this.speed = Math.random() * 3 + 14;
+        this.angle = -Math.PI / 2 + (Math.random() - 0.5) * 0.22;
+        this.vx = Math.cos(this.angle) * this.speed;
+        this.vy = Math.sin(this.angle) * this.speed;
+        this.trail = [];
+        this.exploded = false;
+      }
+
+      update() {
+        this.trail.push({ x: this.x, y: this.y });
+        if (this.trail.length > 7) this.trail.shift();
+
+        this.x += this.vx;
+        this.y += this.vy;
+        this.vy += 0.18; // deceleration
+
+        // Explode at apex or when passing targetY or starting to descend
+        if (this.vy >= -1 || this.y <= this.targetY) {
+          this.exploded = true;
+        }
+      }
+
+      draw(c) {
+        // Draw ascending rocket head
+        c.save();
+        c.fillStyle = '#ffffff';
+        c.shadowBlur = 12;
+        c.shadowColor = this.color;
+        c.beginPath();
+        c.arc(this.x, this.y, 2.5, 0, Math.PI * 2);
+        c.fill();
+
+        // Draw fiery rocket trail
+        for (let i = 0; i < this.trail.length; i++) {
+          const pt = this.trail[i];
+          const trailAlpha = ((i + 1) / this.trail.length) * 0.7;
+          c.globalAlpha = trailAlpha;
+          c.fillStyle = this.color;
+          c.beginPath();
+          c.arc(pt.x, pt.y, (i + 1) * 0.38, 0, Math.PI * 2);
+          c.fill();
+        }
+        c.restore();
+      }
+    }
+
+    const rockets = [];
+    const sparks = [];
+    let isRunning = true;
+    let animId = null;
+
+    function explode(x, y, color) {
+      const particleCount = Math.floor(Math.random() * 25 + 65);
+      for (let i = 0; i < particleCount; i++) {
+        const pColor = Math.random() > 0.3 ? color : (Math.random() > 0.5 ? '#FFFFFF' : '#FFD700');
+        sparks.push(new Spark(x, y, pColor));
+      }
+    }
+
+    // Launch volley sequence of rockets from the bottom
+    const launchSequence = [
+      { delay: 0, xRatio: 0.28, yRatio: 0.30 },
+      { delay: 180, xRatio: 0.72, yRatio: 0.28 },
+      { delay: 450, xRatio: 0.50, yRatio: 0.22 },
+      { delay: 750, xRatio: 0.35, yRatio: 0.34 },
+      { delay: 1050, xRatio: 0.65, yRatio: 0.26 },
+      { delay: 1400, xRatio: 0.20, yRatio: 0.32 },
+      { delay: 1550, xRatio: 0.80, yRatio: 0.30 },
+      { delay: 1800, xRatio: 0.48, yRatio: 0.20 }
+    ];
+
+    launchSequence.forEach(item => {
+      setTimeout(() => {
+        if (!isRunning) return;
+        const color = PALETTE[Math.floor(Math.random() * PALETTE.length)];
+        const startX = width * item.xRatio + (Math.random() - 0.5) * 40;
+        const targetY = height * item.yRatio + (Math.random() - 0.5) * 50;
+        rockets.push(new Rocket(startX, targetY, color));
+      }, item.delay);
+    });
+
+    const startTime = performance.now();
+
+    function render(now) {
+      ctx.clearRect(0, 0, width, height);
+
+      // Update & Draw Rockets
+      for (let i = rockets.length - 1; i >= 0; i--) {
+        const r = rockets[i];
+        r.update();
+        r.draw(ctx);
+
+        if (r.exploded) {
+          explode(r.x, r.y, r.color);
+          rockets.splice(i, 1);
+        }
+      }
+
+      // Update & Draw Sparks
+      for (let i = sparks.length - 1; i >= 0; i--) {
+        const s = sparks[i];
+        s.update();
+        if (s.alpha <= 0) {
+          sparks.splice(i, 1);
+        } else {
+          s.draw(ctx);
+        }
+      }
+
+      const elapsed = now - startTime;
+      if (elapsed > 4500 && rockets.length === 0 && sparks.length === 0) {
+        ctx.clearRect(0, 0, width, height);
+        isRunning = false;
+        window.removeEventListener('resize', onResize);
+        if (animId) cancelAnimationFrame(animId);
+        return;
+      }
+
+      animId = requestAnimationFrame(render);
+    }
+
+    animId = requestAnimationFrame(render);
+  }
+
+  initContactForm();
+
   console.log('%c⚡ MAYUR PRAJAPATI // EDITORIAL PORTFOLIO INITIALIZED', 'color: #ffffff; font-weight: bold; font-size: 14px;');
 });
 
